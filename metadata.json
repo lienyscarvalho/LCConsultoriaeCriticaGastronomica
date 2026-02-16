@@ -1,0 +1,8 @@
+{
+  "name": "LC Consultoria e Crítica Gastronômica",
+  "description": "Plataforma avançada de gestão gastronômica com engenharia de cardápio, treinamentos e controle financeiro.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
