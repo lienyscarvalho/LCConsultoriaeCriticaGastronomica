@@ -43,7 +43,7 @@ const SafetySOP: React.FC<{ onAction?: (msg?: string) => void }> = ({ onAction }
 
   const handlePrintAll = () => {
     onAction?.("Exportando Manual Completo de POPs LC...");
-    window.print();
+    setTimeout(() => window.print(), 500);
   };
 
   const handlePrintChecklist = (id: string, name: string) => {
@@ -52,7 +52,7 @@ const SafetySOP: React.FC<{ onAction?: (msg?: string) => void }> = ({ onAction }
     setTimeout(() => {
       window.print();
       setPrintFilter(null);
-    }, 100);
+    }, 500);
   };
 
   return (

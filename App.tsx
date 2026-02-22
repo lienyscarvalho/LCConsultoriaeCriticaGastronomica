@@ -9,10 +9,12 @@ import MenuManagement from './components/MenuManagement.tsx';
 import Training from './components/Training.tsx';
 import AIConsultant from './components/AIConsultant.tsx';
 import FinancialManagement from './components/FinancialManagement.tsx';
+import { PermissionModal } from './components/PermissionModal.tsx';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>(AppView.DASHBOARD);
   const [notification, setNotification] = useState<{msg: string, type: 'info' | 'success'} | null>(null);
+  const [showPermissions, setShowPermissions] = useState(true);
 
   useEffect(() => {
     if (notification) {
@@ -54,6 +56,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex bg-slate-50 text-slate-900">
+      {showPermissions && <PermissionModal onAccept={() => setShowPermissions(false)} />}
+      
       <Sidebar currentView={currentView} onViewChange={handleViewChange} />
       
       <main className="flex-1 md:ml-64 p-4 md:p-10 pb-24 md:pb-10 transition-all duration-300">
@@ -70,7 +74,7 @@ const App: React.FC = () => {
             <div className="flex items-center space-x-4">
                <button 
                  onClick={() => showNotification("Central de Mensagens: Ativa.", 'info')}
-                 className="p-2 text-slate-400 hover:text-slate-900 bg-white rounded-full border border-slate-100 shadow-sm transition-colors"
+                 className="p-2 text-slate-400 hover:text-slate-900 bg-white rounded-full border border-slate-100 shadow-sm transition-colors cursor-pointer"
                 >
                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
                </button>

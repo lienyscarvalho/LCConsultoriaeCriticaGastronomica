@@ -8,6 +8,11 @@ const FinancialManagement: React.FC<{ onAction?: (msg?: string) => void }> = ({ 
   const targetCMV = 30.0;
   const targetLabor = 20.0;
 
+  const handleExport = () => {
+    onAction?.("Gerando Relatório de Fluxo de Caixa...");
+    setTimeout(() => window.print(), 500);
+  };
+
   return (
     <div className="space-y-8 animate-fadeIn">
       <header>
@@ -58,7 +63,7 @@ const FinancialManagement: React.FC<{ onAction?: (msg?: string) => void }> = ({ 
                  <span className="text-3xl font-serif font-bold text-emerald-600">R$ 60.560,00</span>
               </div>
            </div>
-           <button onClick={() => { onAction?.("Gerando Relatório de Fluxo de Caixa..."); window.print(); }} className="mt-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-amber-700 transition-all cursor-pointer">Exportar Cashflow</button>
+           <button onClick={handleExport} className="mt-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-amber-700 transition-all cursor-pointer">Exportar Cashflow</button>
         </div>
       </div>
     </div>

@@ -7,6 +7,10 @@
     <title>LC Consultoria e Crítica Gastronômica</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Shim critical for Vercel/Static deployments to avoid "process is not defined" crash
+      window.process = window.process || { env: { API_KEY: '' } };
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
