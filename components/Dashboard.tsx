@@ -63,6 +63,19 @@ const Dashboard: React.FC<DashboardProps> = ({ onAction, onNavigate }) => {
             <CheckItem label="Armazenamento de Proteínas" status="PENDENTE" time="---" warning />
             <CheckItem label="Limpeza de Coifas" status="OK" time="Ontem" />
           </div>
+          
+          <div className="mt-8 pt-6 border-t border-slate-100">
+            <h3 className="text-lg font-semibold mb-4 text-slate-800 flex items-center gap-2">
+              <svg className="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" strokeWidth={2}/></svg>
+              Alertas de Estoque Baixo
+            </h3>
+            <div className="space-y-3">
+              <StockAlertItem item="Filé Mignon Limpo" qty="2.5 kg" min="5.0 kg" />
+              <StockAlertItem item="Azeite Trufado" qty="1 un" min="3 un" />
+              <StockAlertItem item="Camarão Rosa G" qty="800 g" min="2.0 kg" />
+            </div>
+          </div>
+
           <button 
             onClick={() => onNavigate?.(AppView.SAFETY_SOP)}
             className="mt-6 w-full py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-colors cursor-pointer"
@@ -74,6 +87,19 @@ const Dashboard: React.FC<DashboardProps> = ({ onAction, onNavigate }) => {
     </div>
   );
 };
+
+const StockAlertItem = ({ item, qty, min }: any) => (
+  <div className="flex items-center justify-between p-3 bg-rose-50 rounded-xl border border-rose-100">
+    <div className="flex items-center gap-3">
+      <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
+      <span className="text-sm font-bold text-rose-900">{item}</span>
+    </div>
+    <div className="text-right">
+      <p className="text-[10px] font-bold text-rose-700">Atual: {qty}</p>
+      <p className="text-[10px] text-rose-400">Mínimo: {min}</p>
+    </div>
+  </div>
+);
 
 const StatCard = ({ title, value, trend, color }: any) => (
   <div className={`${color} p-6 rounded-2xl border border-slate-100 transition-transform hover:scale-[1.02]`}>
